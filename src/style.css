@@ -1,0 +1,41 @@
+:root {
+  --primary-color: black;
+  --secondary-color: whitesmoke;
+  --tertiary-color: silver;
+  --background-color: rgba(255, 255, 255, 0);
+}
+
+body {
+  min-height: 100vh;
+  background-image: url("images/background_05.png");
+  background-position: 75%;
+  background-size: cover;
+  color: var(--secondary-color);
+}
+
+#main-container {
+  min-height: 100vh;
+}
+
+#city-input {
+  color: var(--secondary-color);
+  background-color: var(--background-color);
+}
+
+#city-input::placeholder {
+  color: var(--secondary-color);
+}
+
+#city-input::-webkit-autofill {
+  background-color: var(--background-color);
+}
+
+#weather-data-container {
+  color: var(--secondary-color);
+  border-style: double;
+  border-color: var(--secondary-color);
+}
+
+#temperature {
+  font-size: 72px;
+}
