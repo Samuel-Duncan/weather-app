@@ -13,10 +13,6 @@ body {
   color: var(--secondary-color);
 }
 
-#main-container {
-  min-height: 100vh;
-}
-
 #city-input {
   color: var(--secondary-color);
   background-color: var(--background-color);
@@ -24,10 +20,15 @@ body {
 
 #city-input::placeholder {
   color: var(--secondary-color);
+  opacity: .5;
 }
 
 #city-input::-webkit-autofill {
   background-color: var(--background-color);
+}
+
+#errorMsg {
+  color: red;
 }
 
 #weather-data-container {
