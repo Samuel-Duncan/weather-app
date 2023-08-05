@@ -14,7 +14,7 @@
     <nav class="navbar">
       <div class="container-fluid p-3">
         <div class="d-grid col-4 col-sm-2">
-          <button class="btn btn-outline-light" type="button">F° / C°</button>
+          <button id="tempConversionBtn" class="btn btn-outline-light" type="button">F° / C°</button>
         </div>
         <form class="d-flex col-7 col-sm-5" role="search">
           <input id="search-input" class="form-control me-2" type="text" placeholder="Enter city" aria-label="Search">
@@ -26,7 +26,7 @@
         <span id="errorMsg" class=""></span>
       </div>
     </nav>
-    <h2 class="greeting p-3 mt-3">Good Morning</h2>
+    <h2 id="greeting" class="greeting p-3 mt-3">Good Morning</h2>
     <div id="weather-data-container" class="container p-3">
       <div class="row">
         <span id="weather-description">Mostly Sunny</span>
@@ -35,7 +35,7 @@
         <h1 id="city">Indianapolis, Indiana</h1>
       </div>
       <div class="row">
-        <span id="temperature" class="col-4 col-md-3 me-3">71°</span>
+        <span id="temperature" class="col-4 col-md-3 me-5">71°</span>
         <div id="weather-details" class="col-5 col-md-4 align-self-center">
           <p id="feels-like">Feels Like: 70°</p>
           <p id="wind">Wind: 5 MPH</p>
