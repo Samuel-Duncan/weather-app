@@ -50,7 +50,7 @@ export default class UI {
     }
   }
 
-  static getGreeting() {
+  static setGreeting() {
     const greetingElement = document.getElementById('greeting');
     const currentTime = new Date();
     const currentHour = currentTime.getHours();
@@ -82,7 +82,7 @@ export default class UI {
   }
 
   static handleListeners() {
-    UI.getGreeting();
+    UI.setGreeting();
     UI.handleEvent();
     const searchInput = document.getElementById('search-input');
     const searchBtn = document.getElementById('searchBtn');
