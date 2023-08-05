@@ -1,7 +1,8 @@
 import './style.css';
+import UI from './modules/UI';
 import FetchAPI from './modules/FetchAPI';
 
-FetchAPI.organizeWeatherData('indianapolis');
+UI.handleListener();
 // Retrieve data from API
 // Publish data to information holder
 // Create information holder
