@@ -2,7 +2,7 @@ import FetchAPI from './FetchAPI';
 
 export default class UI {
   static displayData(data) {
-    const time = document.getElementById('time');
+    const date = document.getElementById('date');
     const description = document.getElementById('weather-description');
     const name = document.getElementById('city');
     const temperature = document.getElementById('temperature');
@@ -10,13 +10,21 @@ export default class UI {
     const wind = document.getElementById('wind');
     const humidity = document.getElementById('humidity');
 
-    time.textContent = `${data.localtime}`;
+    date.textContent = `${data.date}`;
     description.textContent = `${data.description}`;
     name.textContent = `${data.city}, ${data.state}`;
     temperature.textContent = `${Math.round(data.temperatureF)}°`;
     feelsLike.textContent = `Feels like: ${data.feelsLikeF}°`;
     wind.textContent = `Wind: ${data.wind} MPH`;
     humidity.textContent = `Humidity: ${data.humidity}%`;
+  }
+
+  static convertToCelsius(temp) {
+    return (temp - 32) / 1.8;
+  }
+
+  static convertToFahrenheit(temp) {
+
   }
 
   static handleEvent(search = 'indianapolis') {
@@ -32,7 +40,7 @@ export default class UI {
         errorMsg.textContent = '';
       }).catch((error) => {
         console.error(error);
-        errorMsg.textContent = `Could not find city: ${search}`;
+        errorMsg.textContent = 'Could not find city.';
       });
   }
 

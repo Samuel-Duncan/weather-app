@@ -1,6 +1,5 @@
 import './style.css';
 import UI from './modules/UI';
-import FetchAPI from './modules/FetchAPI';
 
 UI.handleListener();
 // Retrieve data from API

@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 export default class OrganizeData {
   static organizeData(data) {
     const {
@@ -16,6 +18,9 @@ export default class OrganizeData {
         localtime,
       },
     } = data;
+
+    const date = OrganizeData.formatDate();
+
     return {
       description,
       temperatureF,
@@ -27,6 +32,11 @@ export default class OrganizeData {
       city,
       state,
       localtime,
+      date,
     };
+  }
+
+  static formatDate() {
+    return format(new Date(), 'EEEE, MMMM do');
   }
 }
