@@ -1,6 +1,10 @@
 import FetchAPI from './FetchAPI';
 
 export default class UI {
+  static setTextContent(element, content) {
+    element.textContent = content;
+  }
+
   static displayData(data) {
     const date = document.getElementById('date');
     const description = document.getElementById('weather-description');
@@ -10,43 +14,41 @@ export default class UI {
     const wind = document.getElementById('wind');
     const humidity = document.getElementById('humidity');
 
-    date.textContent = `${data.date}`;
-    description.textContent = `${data.description}`;
-    name.textContent = `${data.city}, ${data.state}`;
-    temperature.textContent = `${Math.round(data.temperatureF)}°F`;
-    feelsLike.textContent = `Feels like: ${data.feelsLikeF}°F`;
-    wind.textContent = `Wind: ${data.wind} MPH`;
-    humidity.textContent = `Humidity: ${data.humidity}%`;
-  }
-
-  static convertToCelsius(temp) {
-    return (temp - 32) / 1.8;
-  }
-
-  static convertToFahrenheit(temp) {
-    return temp * 1.8 + 32;
+    UI.setTextContent(date, `${data.date}`);
+    UI.setTextContent(description, `${data.description}`);
+    UI.setTextContent(name, `${data.city}, ${data.state}`);
+    UI.setTextContent(temperature, `${Math.round(data.temperatureF)}°F`);
+    UI.setTextContent(feelsLike, `Feels like: ${Math.round(data.feelsLikeF)}°F`);
+    UI.setTextContent(wind, `Wind: ${data.wind} MPH`);
+    UI.setTextContent(humidity, `Humidity: ${data.humidity}%`);
   }
 
   static toggleTemperatureUnit() {
     const temperature = document.getElementById('temperature');
     const feelsLike = document.getElementById('feels-like');
-
     const currentTemperature = parseFloat(temperature.textContent);
     const currentFeelsLike = parseFloat(feelsLike.textContent.split(' ')[2]);
+    const convertToCelsius = (temp) => (temp - 32) / 1.8;
+    const convertToFahrenheit = (temp) => temp * 1.8 + 32;
 
     if (temperature.textContent.includes('F')) {
-      const convertTemperatureToC = UI.convertToCelsius(`${currentTemperature}`);
-      const convertFeelsLikeToC = UI.convertToCelsius(`${currentFeelsLike}`);
+      const convertedTemperatureToC = convertToCelsius(`${currentTemperature}`);
+      const convertedFeelsLikeToC = convertToCelsius(`${currentFeelsLike}`);
 
-      temperature.textContent = `${Math.round(convertTemperatureToC)}°C`;
-      feelsLike.textContent = `Feels like: ${Math.round(convertFeelsLikeToC)}°C`;
+      UI.setTextContent(temperature, `${Math.round(convertedTemperatureToC)}°C`);
+      UI.setTextContent(feelsLike, `Feels like: ${Math.round(convertedFeelsLikeToC)}°C`);
     } else {
-      const convertTemperatureToF = UI.convertToFahrenheit(`${currentTemperature}`);
-      const convertFeelsLikeToF = UI.convertToFahrenheit(`${currentFeelsLike}`);
+      const convertedTemperatureToF = convertToFahrenheit(`${currentTemperature}`);
+      const convertedFeelsLikeToF = convertToFahrenheit(`${currentFeelsLike}`);
 
-      temperature.textContent = `${Math.round(convertTemperatureToF)}°F`;
-      feelsLike.textContent = `Feels like: ${Math.round(convertFeelsLikeToF)}°F`;
+      UI.setTextContent(temperature, `${Math.round(convertedTemperatureToF)}°F`);
+      UI.setTextContent(feelsLike, `Feels like: ${Math.round(convertedFeelsLikeToF)}°F`);
     }
+  }
+
+  static setErrorMessage(message) {
+    const errorMsg = document.getElementById('errorMsg');
+    UI.setTextContent(errorMsg, message);
   }
 
   static setGreeting() {
@@ -55,40 +57,37 @@ export default class UI {
     const currentHour = currentTime.getHours();
 
     if (currentHour >= 5 && currentHour < 12) {
-      greetingElement.textContent = 'Good morning';
+      UI.setTextContent(greetingElement, 'Good morning');
     } else if (currentHour >= 12 && currentHour < 18) {
-      greetingElement.textContent = 'Good afternoon';
+      UI.setTextContent(greetingElement, 'Good afternoon');
     } else {
-      greetingElement.textContent = 'Good evening';
+      UI.setTextContent(greetingElement, 'Good evening');
     }
   }
 
   static handleEvent(search = 'indianapolis') {
-    const errorMsg = document.getElementById('errorMsg');
     if (!search) {
-      errorMsg.textContent = 'Please enter a city.';
+      UI.setErrorMessage('Please enter a city.');
       return;
     }
 
     FetchAPI.fetchData(search)
       .then((result) => {
         UI.displayData(result);
-        errorMsg.textContent = '';
+        UI.setErrorMessage('');
       }).catch((error) => {
         console.error(error);
-        errorMsg.textContent = 'Could not find city.';
+        UI.setErrorMessage('Could not find city.');
       });
   }
 
   static handleListeners() {
-    UI.setGreeting();
-    UI.handleEvent();
-    const searchInput = document.getElementById('search-input');
     const searchBtn = document.getElementById('searchBtn');
     const tempConversionBtn = document.getElementById('tempConversionBtn');
 
     searchBtn.addEventListener('click', (event) => {
       event.preventDefault();
+      const searchInput = document.getElementById('search-input');
       const searchValue = searchInput.value.trim();
       UI.handleEvent(searchValue);
       searchInput.value = '';
@@ -97,5 +96,11 @@ export default class UI {
     tempConversionBtn.addEventListener('click', () => {
       UI.toggleTemperatureUnit();
     });
+  }
+
+  static initialize() {
+    UI.setGreeting();
+    UI.handleEvent();
+    UI.handleListeners();
   }
 }

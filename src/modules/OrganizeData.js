@@ -18,8 +18,8 @@ export default class OrganizeData {
         localtime,
       },
     } = data;
-
-    const date = OrganizeData.formatDate();
+    const formatDate = () => format(new Date(), 'EEEE, MMMM do');
+    const date = formatDate();
 
     return {
       description,
@@ -34,9 +34,5 @@ export default class OrganizeData {
       localtime,
       date,
     };
-  }
-
-  static formatDate() {
-    return format(new Date(), 'EEEE, MMMM do');
   }
 }

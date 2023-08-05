@@ -1,7 +1,7 @@
 import './style.css';
 import UI from './modules/UI';
 
-UI.handleListeners();
+UI.initialize();
 // Retrieve data from API
 // Publish data to information holder
 // Create information holder
