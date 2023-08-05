@@ -17,27 +17,27 @@
           <button class="btn btn-outline-light" type="button">F° / C°</button>
         </div>
         <form class="d-flex col-7 col-sm-5" role="search">
-          <input id="city-input" class="form-control me-2" type="search" placeholder="Enter city" aria-label="Search">
-          <button class="btn btn-outline-light" type="submit">Search</button>
+          <input id="search-input" class="form-control me-2" type="text" placeholder="Enter city" aria-label="Search">
+          <button id="searchBtn" class="btn btn-outline-light" type="button">Search</button>
         </form>
       </div>
-      <p id="time" class="px-3">11:23PM</p>
-      <p id="errorMsg" class="px-3">No matching location found!</p>
+      <span id="time" class="px-3">11:23PM</span>
+      <p id="errorMsg" class="px-3"></p>
     </nav>
     <h2 class="greeting p-3 mt-3">Good Morning</h2>
     <div id="weather-data-container" class="container py-3">
       <div class="row">
-        <div id="weather-description">Mostly Sunny</div>
+        <span id="weather-description">Mostly Sunny</span>
       </div>
       <div class="row">
         <h1 id="city">Indianapolis, Indiana</h1>
       </div>
       <div class="row">
-        <div id="temperature" class="col-4 col-sm-3">71°</div>
+        <span id="temperature" class="col-4 col-sm-3">71°</span>
         <div id="weather-details" class="col-5 col-sm-4 align-self-center">
-          <div id="feels-like">Feels Like: 70°</div>
-          <div id="wind">Wind: 5 MPH</div>
-          <div id="humidity">Humidity: 69%</div>
+          <p id="feels-like">Feels Like: 70°</p>
+          <p id="wind">Wind: 5 MPH</p>
+          <p id="humidity">Humidity: 69%</p>
         </div>
       </div>
     </div>
