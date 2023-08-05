@@ -2,7 +2,7 @@ import OrganizeData from './OrganizeData';
 
 export default class FetchAPI {
   static async fetchData(search) {
-    const endpoint = `http://api.weatherapi.com/v1/current.json?key=aad5fa17ae2c47f7b00214311230208&q=${search}`;
+    const endpoint = `https://api.weatherapi.com/v1/current.json?key=aad5fa17ae2c47f7b00214311230208&q=${search}`;
     try {
       const response = await fetch(endpoint, { mode: 'cors' });
       if (!response.ok) {

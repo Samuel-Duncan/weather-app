@@ -1,4 +1,3 @@
-import { parse } from 'date-fns';
 import FetchAPI from './FetchAPI';
 
 export default class UI {
