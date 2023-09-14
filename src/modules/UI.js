@@ -16,7 +16,7 @@ export default class UI {
 
     UI.setTextContent(date, `${data.date}`);
     UI.setTextContent(description, `${data.description}`);
-    UI.setTextContent(name, `${data.city}, ${data.state}`);
+    UI.setTextContent(name, `${data.city}, ${(data.country !== 'United States of America') ? data.country : data.state}`);
     UI.setTextContent(temperature, `${Math.round(data.temperatureF)}°F`);
     UI.setTextContent(feelsLike, `Feels like: ${Math.round(data.feelsLikeF)}°F`);
     UI.setTextContent(wind, `Wind: ${data.wind} MPH`);

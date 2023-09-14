@@ -15,6 +15,7 @@ export default class OrganizeData {
       location: {
         name: city,
         region: state,
+        country,
         localtime,
       },
     } = data;
@@ -31,6 +32,7 @@ export default class OrganizeData {
       humidity,
       city,
       state,
+      country,
       localtime,
       date,
     };
