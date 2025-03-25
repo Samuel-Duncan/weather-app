@@ -7,7 +7,7 @@
 
 body {
   min-height: 100vh;
-  background-image: url("images/background_05.png");
+  background-image: url('images/background_05.png');
   background-position: 75%;
   background-size: cover;
   color: var(--secondary-color);
@@ -20,7 +20,7 @@ body {
 
 #search-input::placeholder {
   color: var(--secondary-color);
-  opacity: .5;
+  opacity: 0.5;
 }
 
 #search-input::-webkit-autofill {
