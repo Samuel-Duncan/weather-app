@@ -1,2 +1,2 @@
 # weather-app
-Weather App - The Odin Project
+Simply search a city and watch the weather data populate!
